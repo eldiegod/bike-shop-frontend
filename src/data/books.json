@@ -7,32 +7,5 @@
     "author": "Rick Riordan",
     "price": 12.5,
     "genre": "Fiction"
-  },
-  {
-    "id": 2,
-    "image": "https://placeimg.com/480/300/tech",
-    "link": "/api/v1/items/2",
-    "title": "The Sea of Monsters",
-    "author": "Rick Riordan",
-    "price": 6.49,
-    "genre": "Fiction"
-  },
-  {
-    "id": 3,
-    "image": "https://placeimg.com/480/300/tech",
-    "link": "/api/v1/items/3",
-    "title": "Sophie's World : The Greek Philosophers",
-    "author": "Jostein Gaarder",
-    "price": 3.07,
-    "genre": "Thriller"
-  },
-  {
-    "id": 4,
-    "image": "https://placeimg.com/480/300/tech",
-    "link": "/api/v1/items/4",
-    "title": "Lucene in Action, Second Edition",
-    "author": "Michael McCandless",
-    "price": 30.5,
-    "genre": "Thriller"
   }
 ]

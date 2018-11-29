@@ -7,5 +7,5 @@ const {
 module.exports = override(
   disableEsLint(),
   addBabelPlugin('styled-components'),
-  // addBabelPlugin(['inline-react-svg']),
+  addBabelPlugin(['inline-react-svg']),
 );
