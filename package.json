@@ -10,9 +10,13 @@
     "styled-components": "^4.1.1"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
+    "purgecss": "purgecss -c purgecss.config.js -o src/styles/",
+    "build:css": "postcss src/styles/index.css -o src/styles/bundle.css && npm run purgecss",
+    "watch:css": "postcss src/styles/index.css -o src/styles/bundle.css -w",
+    "start:windows": "npm run watch:css | react-app-rewired start",
+    "start": "npm run watch:css & react-app-rewired start",
+    "build": "npm run build:css && react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
     "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
@@ -20,16 +24,24 @@
   },
   "browserslist": [
     ">0.2%",
-    "not dead",
     "not ie <= 11",
     "not op_mini all"
   ],
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.8.0",
+    "autoprefixer": "^7.2.6",
     "babel-plugin-import": "^1.11.0",
     "babel-plugin-inline-react-svg": "^1.0.1",
+    "babel-plugin-styled-components": "^1.8.0",
     "customize-cra": "^0.2.4",
+    "postcss-cli": "^5.0.0",
+    "postcss-import": "^11.1.0",
+    "postcss-initial": "^2.0.0",
+    "postcss-mixins": "^6.2.0",
+    "postcss-nested": "^3.0.0",
+    "precss": "^4.0.0",
+    "purgecss": "^0.21.0",
     "react-app-rewired": "^1.6.2",
-    "react-scripts": "^2.1.1"
+    "react-scripts": "^2.1.1",
+    "tailwindcss": "^0.5.2"
   }
 }

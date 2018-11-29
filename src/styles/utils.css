@@ -1,0 +1,50 @@
+/* responsive means these classes can be media queried
+i.e. sm:pin-l-50 */
+@responsive {
+  /* positions */
+  .pin-t-50  {
+    top: 50%;
+  }
+
+  .pin-l-50  {
+    left: 50%;
+  }
+
+  /* transforms */
+  .transf-y-n50 {
+    transform: translateY(-50%);
+  }
+
+  .transf-y-50 {
+    transform: translateY(50%);
+  }
+
+  .transf-y-25 {
+    transform: translateY(25%);
+  }
+
+  .transf-y-33 {
+    transform: translateY(33%);
+  }
+
+  .transf-center {
+    transform: translate(-50%, -50%);
+  }
+
+  .align-h  {
+    @apply relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .align-v {
+    @apply relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* display */
+  .hidd {
+    display: none;
+  }
+}
