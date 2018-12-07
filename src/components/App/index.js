@@ -9,10 +9,10 @@ const App = () => {
     <div>
       <Header />
       {/* content */}
-      <div className="pt-8 px-8 min-h-screen bg-blue max-w-2xl mx-auto">
+      <div className="py-16 px-4 md:px-0 min-h-screen max-w-2xl mx-auto">
         <Catalog />
       </div>
-      <div className="text-center">footer</div>
+      <div className="text-center py-2">© Pandabize</div>
     </div>
   );
 };
