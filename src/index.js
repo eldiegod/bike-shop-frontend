@@ -1,14 +1,28 @@
 import './styles/bundle.css';
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
-// ReactDOM.render(<App />, document.getElementById('root'));
+import ApolloClient from 'apollo-boost';
+import {ApolloProvider} from 'react-apollo-hooks';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:3000/graphql',
+  clientState: {
+    // defaults,
+    // resolvers,
+    // typeDefs
+  },
+});
 
 const render = Component => {
   return ReactDOM.render(
-    <Component />,
+    <Suspense fallback={'Page is loading...'}>
+      <ApolloProvider client={client}>
+        <Component />
+      </ApolloProvider>
+    </Suspense>,
     document.getElementById('root'),
   );
 };

@@ -1,12 +1,10 @@
 import React from 'react';
 
 //icons (imported as svg using babel plugin)
-import faBike from '../../icons/bike.svg';
 import faCart from '../../icons/shopping-cart-outline.svg';
 
 //components
 import Icon from 'icons/Icon.js';
-
 
 const Header = () => {
   return (
