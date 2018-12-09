@@ -17,7 +17,6 @@ const App = () => {
           <Suspense fallback={<Fallback />}>
             <Route path="/" exact component={Catalog} />
             <Route path="/bike/:id" component={BikeDetails} />
-            {/* <Route path="/users/" component={Users} /> */}
           </Suspense>
         </div>
         {/* footer */}

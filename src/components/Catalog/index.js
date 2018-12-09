@@ -1,4 +1,4 @@
-import React, {Suspense} from 'react';
+import React from 'react';
 
 import {gql} from 'apollo-boost';
 import {useQuery} from 'react-apollo-hooks';
@@ -22,21 +22,6 @@ const GET_BIKES = gql`
   }
 `;
 
-const SuspenseCatalog = () => {
-  return (
-    //TODO: improve catalog loading view
-    <Suspense
-      fallback={
-        <div className="text-blue-darker text-center">
-          Loading page... 🚴‍♀
-        </div>
-      }
-    >
-      <Catalog />
-    </Suspense>
-  );
-};
-
 const Catalog = () => {
   const {data, error} = useQuery(GET_BIKES);
   console.log(data);
@@ -58,4 +43,4 @@ const Catalog = () => {
   );
 };
 
-export default SuspenseCatalog;
+export default Catalog;

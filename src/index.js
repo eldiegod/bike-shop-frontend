@@ -1,20 +1,23 @@
 import './styles/bundle.css';
 import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
-import * as serviceWorker from './serviceWorker';
 
 import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo-hooks';
 
+import * as serviceWorker from './serviceWorker';
+import App from 'components/App';
 import Fallback from 'components/Fallback';
+
+import {defaults, resolvers} from 'apollo/resolvers';
+import {typeDefs} from 'apollo/schema';
 
 const client = new ApolloClient({
   uri: 'http://localhost:3000/graphql',
   clientState: {
-    // defaults,
-    // resolvers,
-    // typeDefs
+    defaults,
+    resolvers,
+    typeDefs,
   },
 });
 
