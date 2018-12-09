@@ -7,6 +7,8 @@ import * as serviceWorker from './serviceWorker';
 import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo-hooks';
 
+import Fallback from 'components/Fallback';
+
 const client = new ApolloClient({
   uri: 'http://localhost:3000/graphql',
   clientState: {
@@ -18,7 +20,7 @@ const client = new ApolloClient({
 
 const render = Component => {
   return ReactDOM.render(
-    <Suspense fallback={'Page is loading...'}>
+    <Suspense fallback={<Fallback />}>
       <ApolloProvider client={client}>
         <Component />
       </ApolloProvider>
