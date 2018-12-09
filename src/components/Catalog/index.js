@@ -1,13 +1,14 @@
 import React, {Suspense} from 'react';
 
 import {gql} from 'apollo-boost';
-import {useApolloClient, useQuery} from 'react-apollo-hooks';
+import {useQuery} from 'react-apollo-hooks';
 
 import Item from './Item';
 
 const GET_BIKES = gql`
   {
     allBikes {
+      id
       name
       price
       customizables {
@@ -25,7 +26,11 @@ const SuspenseCatalog = () => {
   return (
     //TODO: improve catalog loading view
     <Suspense
-      fallback={<div className="text-blue-darker">Loading...</div>}
+      fallback={
+        <div className="text-blue-darker text-center">
+          Loading page... 🚴‍♀
+        </div>
+      }
     >
       <Catalog />
     </Suspense>

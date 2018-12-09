@@ -7,6 +7,7 @@ const Customizable = ({customizable}) => {
       {customizable.options.map((options, index) =>
         customizable.hasColors ? (
           <div
+            key={index}
             className={`ml-2 align-middle inline-block w-3 h-3 bg-${
               options.choice
             } bg-${options.choice}-light shadow-md rounded-full`}

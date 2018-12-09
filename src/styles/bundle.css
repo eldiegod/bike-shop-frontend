@@ -3912,8 +3912,12 @@ button,
   height: 16rem;
 }
 
-.h-250 {
-  height: 250px;
+.h-128 {
+  height: 32rem;
+}
+
+.h-192 {
+  height: 40rem;
 }
 
 .h-auto {
@@ -4018,6 +4022,10 @@ button,
 
 .m-32 {
   margin: 8rem;
+}
+
+.m-63 {
+  margin: 12rem;
 }
 
 .m-auto {
@@ -4190,6 +4198,16 @@ button,
 .mx-32 {
   margin-left: 8rem;
   margin-right: 8rem;
+}
+
+.my-63 {
+  margin-top: 12rem;
+  margin-bottom: 12rem;
+}
+
+.mx-63 {
+  margin-left: 12rem;
+  margin-right: 12rem;
 }
 
 .my-auto {
@@ -4478,6 +4496,22 @@ button,
   margin-left: 8rem;
 }
 
+.mt-63 {
+  margin-top: 12rem;
+}
+
+.mr-63 {
+  margin-right: 12rem;
+}
+
+.mb-63 {
+  margin-bottom: 12rem;
+}
+
+.ml-63 {
+  margin-left: 12rem;
+}
+
 .mt-auto {
   margin-top: auto;
 }
@@ -4640,6 +4674,14 @@ button,
 
 .min-h-75-screen {
   min-height: 75vh;
+}
+
+.min-h-85-screen {
+  min-height: 85vh;
+}
+
+.min-h-90-screen {
+  min-height: 90vh;
 }
 
 .min-h-screen {
@@ -10856,8 +10898,12 @@ i.e. sm:pin-l-50 */
     height: 16rem;
   }
 
-  .vsm\:h-250 {
-    height: 250px;
+  .vsm\:h-128 {
+    height: 32rem;
+  }
+
+  .vsm\:h-192 {
+    height: 40rem;
   }
 
   .vsm\:h-auto {
@@ -10962,6 +11008,10 @@ i.e. sm:pin-l-50 */
 
   .vsm\:m-32 {
     margin: 8rem;
+  }
+
+  .vsm\:m-63 {
+    margin: 12rem;
   }
 
   .vsm\:m-auto {
@@ -11134,6 +11184,16 @@ i.e. sm:pin-l-50 */
   .vsm\:mx-32 {
     margin-left: 8rem;
     margin-right: 8rem;
+  }
+
+  .vsm\:my-63 {
+    margin-top: 12rem;
+    margin-bottom: 12rem;
+  }
+
+  .vsm\:mx-63 {
+    margin-left: 12rem;
+    margin-right: 12rem;
   }
 
   .vsm\:my-auto {
@@ -11422,6 +11482,22 @@ i.e. sm:pin-l-50 */
     margin-left: 8rem;
   }
 
+  .vsm\:mt-63 {
+    margin-top: 12rem;
+  }
+
+  .vsm\:mr-63 {
+    margin-right: 12rem;
+  }
+
+  .vsm\:mb-63 {
+    margin-bottom: 12rem;
+  }
+
+  .vsm\:ml-63 {
+    margin-left: 12rem;
+  }
+
   .vsm\:mt-auto {
     margin-top: auto;
   }
@@ -11584,6 +11660,14 @@ i.e. sm:pin-l-50 */
 
   .vsm\:min-h-75-screen {
     min-height: 75vh;
+  }
+
+  .vsm\:min-h-85-screen {
+    min-height: 85vh;
+  }
+
+  .vsm\:min-h-90-screen {
+    min-height: 90vh;
   }
 
   .vsm\:min-h-screen {
@@ -17731,8 +17815,12 @@ i.e. sm:pin-l-50 */
     height: 16rem;
   }
 
-  .sm\:h-250 {
-    height: 250px;
+  .sm\:h-128 {
+    height: 32rem;
+  }
+
+  .sm\:h-192 {
+    height: 40rem;
   }
 
   .sm\:h-auto {
@@ -17837,6 +17925,10 @@ i.e. sm:pin-l-50 */
 
   .sm\:m-32 {
     margin: 8rem;
+  }
+
+  .sm\:m-63 {
+    margin: 12rem;
   }
 
   .sm\:m-auto {
@@ -18009,6 +18101,16 @@ i.e. sm:pin-l-50 */
   .sm\:mx-32 {
     margin-left: 8rem;
     margin-right: 8rem;
+  }
+
+  .sm\:my-63 {
+    margin-top: 12rem;
+    margin-bottom: 12rem;
+  }
+
+  .sm\:mx-63 {
+    margin-left: 12rem;
+    margin-right: 12rem;
   }
 
   .sm\:my-auto {
@@ -18297,6 +18399,22 @@ i.e. sm:pin-l-50 */
     margin-left: 8rem;
   }
 
+  .sm\:mt-63 {
+    margin-top: 12rem;
+  }
+
+  .sm\:mr-63 {
+    margin-right: 12rem;
+  }
+
+  .sm\:mb-63 {
+    margin-bottom: 12rem;
+  }
+
+  .sm\:ml-63 {
+    margin-left: 12rem;
+  }
+
   .sm\:mt-auto {
     margin-top: auto;
   }
@@ -18459,6 +18577,14 @@ i.e. sm:pin-l-50 */
 
   .sm\:min-h-75-screen {
     min-height: 75vh;
+  }
+
+  .sm\:min-h-85-screen {
+    min-height: 85vh;
+  }
+
+  .sm\:min-h-90-screen {
+    min-height: 90vh;
   }
 
   .sm\:min-h-screen {
@@ -24606,8 +24732,12 @@ i.e. sm:pin-l-50 */
     height: 16rem;
   }
 
-  .md\:h-250 {
-    height: 250px;
+  .md\:h-128 {
+    height: 32rem;
+  }
+
+  .md\:h-192 {
+    height: 40rem;
   }
 
   .md\:h-auto {
@@ -24712,6 +24842,10 @@ i.e. sm:pin-l-50 */
 
   .md\:m-32 {
     margin: 8rem;
+  }
+
+  .md\:m-63 {
+    margin: 12rem;
   }
 
   .md\:m-auto {
@@ -24884,6 +25018,16 @@ i.e. sm:pin-l-50 */
   .md\:mx-32 {
     margin-left: 8rem;
     margin-right: 8rem;
+  }
+
+  .md\:my-63 {
+    margin-top: 12rem;
+    margin-bottom: 12rem;
+  }
+
+  .md\:mx-63 {
+    margin-left: 12rem;
+    margin-right: 12rem;
   }
 
   .md\:my-auto {
@@ -25172,6 +25316,22 @@ i.e. sm:pin-l-50 */
     margin-left: 8rem;
   }
 
+  .md\:mt-63 {
+    margin-top: 12rem;
+  }
+
+  .md\:mr-63 {
+    margin-right: 12rem;
+  }
+
+  .md\:mb-63 {
+    margin-bottom: 12rem;
+  }
+
+  .md\:ml-63 {
+    margin-left: 12rem;
+  }
+
   .md\:mt-auto {
     margin-top: auto;
   }
@@ -25334,6 +25494,14 @@ i.e. sm:pin-l-50 */
 
   .md\:min-h-75-screen {
     min-height: 75vh;
+  }
+
+  .md\:min-h-85-screen {
+    min-height: 85vh;
+  }
+
+  .md\:min-h-90-screen {
+    min-height: 90vh;
   }
 
   .md\:min-h-screen {
@@ -31481,8 +31649,12 @@ i.e. sm:pin-l-50 */
     height: 16rem;
   }
 
-  .lg\:h-250 {
-    height: 250px;
+  .lg\:h-128 {
+    height: 32rem;
+  }
+
+  .lg\:h-192 {
+    height: 40rem;
   }
 
   .lg\:h-auto {
@@ -31587,6 +31759,10 @@ i.e. sm:pin-l-50 */
 
   .lg\:m-32 {
     margin: 8rem;
+  }
+
+  .lg\:m-63 {
+    margin: 12rem;
   }
 
   .lg\:m-auto {
@@ -31759,6 +31935,16 @@ i.e. sm:pin-l-50 */
   .lg\:mx-32 {
     margin-left: 8rem;
     margin-right: 8rem;
+  }
+
+  .lg\:my-63 {
+    margin-top: 12rem;
+    margin-bottom: 12rem;
+  }
+
+  .lg\:mx-63 {
+    margin-left: 12rem;
+    margin-right: 12rem;
   }
 
   .lg\:my-auto {
@@ -32047,6 +32233,22 @@ i.e. sm:pin-l-50 */
     margin-left: 8rem;
   }
 
+  .lg\:mt-63 {
+    margin-top: 12rem;
+  }
+
+  .lg\:mr-63 {
+    margin-right: 12rem;
+  }
+
+  .lg\:mb-63 {
+    margin-bottom: 12rem;
+  }
+
+  .lg\:ml-63 {
+    margin-left: 12rem;
+  }
+
   .lg\:mt-auto {
     margin-top: auto;
   }
@@ -32209,6 +32411,14 @@ i.e. sm:pin-l-50 */
 
   .lg\:min-h-75-screen {
     min-height: 75vh;
+  }
+
+  .lg\:min-h-85-screen {
+    min-height: 85vh;
+  }
+
+  .lg\:min-h-90-screen {
+    min-height: 90vh;
   }
 
   .lg\:min-h-screen {
@@ -38356,8 +38566,12 @@ i.e. sm:pin-l-50 */
     height: 16rem;
   }
 
-  .xl\:h-250 {
-    height: 250px;
+  .xl\:h-128 {
+    height: 32rem;
+  }
+
+  .xl\:h-192 {
+    height: 40rem;
   }
 
   .xl\:h-auto {
@@ -38462,6 +38676,10 @@ i.e. sm:pin-l-50 */
 
   .xl\:m-32 {
     margin: 8rem;
+  }
+
+  .xl\:m-63 {
+    margin: 12rem;
   }
 
   .xl\:m-auto {
@@ -38634,6 +38852,16 @@ i.e. sm:pin-l-50 */
   .xl\:mx-32 {
     margin-left: 8rem;
     margin-right: 8rem;
+  }
+
+  .xl\:my-63 {
+    margin-top: 12rem;
+    margin-bottom: 12rem;
+  }
+
+  .xl\:mx-63 {
+    margin-left: 12rem;
+    margin-right: 12rem;
   }
 
   .xl\:my-auto {
@@ -38922,6 +39150,22 @@ i.e. sm:pin-l-50 */
     margin-left: 8rem;
   }
 
+  .xl\:mt-63 {
+    margin-top: 12rem;
+  }
+
+  .xl\:mr-63 {
+    margin-right: 12rem;
+  }
+
+  .xl\:mb-63 {
+    margin-bottom: 12rem;
+  }
+
+  .xl\:ml-63 {
+    margin-left: 12rem;
+  }
+
   .xl\:mt-auto {
     margin-top: auto;
   }
@@ -39084,6 +39328,14 @@ i.e. sm:pin-l-50 */
 
   .xl\:min-h-75-screen {
     min-height: 75vh;
+  }
+
+  .xl\:min-h-85-screen {
+    min-height: 85vh;
+  }
+
+  .xl\:min-h-90-screen {
+    min-height: 90vh;
   }
 
   .xl\:min-h-screen {
