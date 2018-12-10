@@ -1,6 +1,8 @@
 export const typeDefs = `
   type CustomBike {
-    bikeId: Int
+    id: Int
+    name: String
+    price: Float
     optionIds: [Int]
   }
 
@@ -10,10 +12,10 @@ export const typeDefs = `
   }
 
   type Mutation {
-    
+    updateOrder(customerEmail: String, customBikes: [CustomBike]): Order
   }
 
   type Query {
-    currentOrder: Order
+    order: Order
   }
 `;

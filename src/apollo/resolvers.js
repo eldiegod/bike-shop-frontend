@@ -1,7 +1,7 @@
 import {gql} from 'apollo-boost';
 
 export const defaults = {
-  currentOrder: {
+  order: {
     customerEmail: '',
     customBikes: [],
     __typename: 'Order',
@@ -9,69 +9,32 @@ export const defaults = {
 };
 
 export const resolvers = {
-  Image: {
-    isLiked: () => false,
-  },
   Mutation: {
-    toggleLikedPhoto: (_, {id}, {cache, getCacheKey}) => {
-      const fragment = gql`
-        fragment isLiked on Image {
-          isLiked
-          url
-        }
-      `;
-      const fragmentId = getCacheKey({id, __typename: 'Image'});
-      const photo = cache.readFragment({
-        fragment,
-        id: fragmentId,
-      });
-
-      // first we have to toggle the client-side only field
-      cache.writeData({
-        id: fragmentId,
-        data: {
-          ...photo,
-          isLiked: !photo.isLiked,
-        },
-      });
-
+    updateOrder: (
+      _,
+      {customerEmail = null, customBikes = []},
+      {cache},
+    ) => {
       const query = gql`
-        {
-          likedPhotos @client {
-            url
-            id
+        query GetOrder {
+          order @client {
+            customerEmail
+            customBikes
           }
         }
       `;
-      const {likedPhotos} = cache.readQuery({query});
-
-      // if we're unliking the photo, remove it from the array.
-      const data = {
-        likedPhotos: photo.isLiked
-          ? likedPhotos.filter(photo => photo.id !== id)
-          : likedPhotos.concat([
-              {url: photo.url, id, __typename: 'LikedPhoto'},
-            ]),
+      console.log('testing the apollo mutation');
+      const previous = cache.readQuery({query});
+      console.log(previous);
+      const updatedOrder = {
+        __typename: 'Order',
+        customerEmail: customerEmail || previous.customerEmail,
+        customBikes: customBikes || previous.customBikes,
       };
-
-      // add the liked photo to an array for easy access
-      cache.writeData({data});
-      return data;
-    },
-    updateOrder: (_, {customerEmail}, {cache, getCacheKey}) => {
-      const query = gql`
-        query GetTodos {
-          todos @client {
-            id
-            text
-            completed
-          }
-        }
-      `;
-      const data = {customerEmail};
-      cache.writeData({id: `User:${id}`, data});
-
-      return data;
+      const data = {order: updatedOrder};
+      console.log(data);
+      cache.writeQuery({query, data});
+      return updatedOrder;
     },
   },
 };

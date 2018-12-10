@@ -1,9 +1,25 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {gql} from 'apollo-boost';
 
 import BikeIcon from 'icons/BikeIcon';
 import Underline from 'components/Underline';
 import Customizable from './Customizable';
+
+const UPDATE_ORDER = gql`
+  mutation updateOrder(
+    $customerEmail: String
+    $customBikes: [CustomBike]
+  ) {
+    updateOrder(
+      customerEmail: $customerEmail
+      customBikes: $customBikes
+    ) @client {
+      customerEmail
+      customBikes
+    }
+  }
+`;
 
 const Bike = ({bike}) => {
   return (

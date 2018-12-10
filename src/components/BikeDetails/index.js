@@ -31,7 +31,6 @@ const BikeDetails = ({
     variables: {id: parseInt(id)},
   });
   console.log(data);
-  console.log(error);
   return (
     <>
       {error || !data.bike ? (
