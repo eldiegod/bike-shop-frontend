@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {gql} from 'apollo-boost';
 
@@ -22,6 +22,18 @@ const UPDATE_ORDER = gql`
 `;
 
 const Bike = ({bike}) => {
+  const [options, setOptions] = useState(() => {
+    const initialOptions = [];
+    bike.customizables.forEach(customizable => {
+      initialOptions[customizable.name] = {
+        name: customizable.name,
+        choice: customizable.options[0].choice,
+        id: customizable.options[0].id,
+      };
+    });
+    console.log(initialOptions);
+    return initialOptions;
+  });
   return (
     <div className="mt-16 pl-4 w-full shadow-md">
       <div className="px-3 pt-6 inline-block w-1/2 bg-white align-top">
@@ -45,6 +57,14 @@ const Bike = ({bike}) => {
             {bike.customizables.map(customizable => (
               <Customizable
                 key={customizable.name}
+                select={optionSelected => {
+                  console.log('clicked');
+                  console.log(options);
+                  options[optionSelected.name] = optionSelected;
+                  console.log(options);
+                  setOptions(options);
+                }}
+                selectedId={options[customizable.name].id}
                 customizable={customizable}
               />
             ))}
@@ -63,7 +83,10 @@ const Bike = ({bike}) => {
         </div>
       </div>
       <div className="bg-grey-light inline-block w-1/2 h-128">
-        <BikeIcon wheelsColor="#fff" frameColor="red" />
+        <BikeIcon
+          wheelsColor={options['Wheels Color'].choice}
+          frameColor={options['Rim Color'].choice}
+        />
       </div>
     </div>
   );

@@ -1,26 +1,64 @@
 import React from 'react';
 
-const Customizable = ({customizable}) => {
+const Text = ({children, isSelected, onClick}) => {
+  const selectedClasses = isSelected
+    ? 'underline font-bold'
+    : 'hover:underline hover:font-bold';
+  return (
+    <span
+      onClick={onClick}
+      className={`pl-2 pt-1 cursor-pointer align-middle font-normal ${selectedClasses}`}
+    >
+      {children}
+    </span>
+  );
+};
+
+const Color = ({color, isSelected, onClick}) => {
+  const selectedClasses = isSelected
+    ? 'shadow-md rounded  '
+    : 'hover:shadow-md rounded-full hover:rounded-sm';
+  return (
+    <div
+      onClick={onClick}
+      className={`ml-2 align-middle cursor-pointer inline-block w-5 h-5 bg-${color} bg-${color}-light shadow-lg  ${selectedClasses}`}
+    />
+  );
+};
+
+const Customizable = ({customizable, selectedId, select}) => {
+  const isSelected = id => selectedId === id;
   return (
     <div className="px-2 py-1 mt-1 bg-grey-lighter text-grey-darker shadow-sm">
       <span className="pt-1 align-middle">{customizable.name}: </span>
-      {customizable.options.map((options, index) =>
+      {customizable.options.map((option, index) =>
         customizable.hasColors ? (
-          <div
+          <Color
             key={index}
-            className={`ml-2 align-middle inline-block w-5 h-5 bg-${
-              options.choice
-            } bg-${
-              options.choice
-            }-light hover:shadow-md shadow-lg rounded-full hover:rounded-none`}
+            isSelected={selectedId === option.id}
+            onClick={() => {
+              select({
+                name: customizable.name,
+                choice: option.choice,
+                id: option.id,
+              });
+            }}
+            color={option.choice}
           />
         ) : (
-          <span
-            className="pl-2 pt-1 align-middle font-normal"
+          <Text
+            onClick={() => {
+              select({
+                name: customizable.name,
+                choice: option.choice,
+                id: option.id,
+              });
+            }}
+            isSelected={selectedId === option.id}
             key={index}
           >
-            {options.choice}
-          </span>
+            {option.choice}
+          </Text>
         ),
       )}
     </div>

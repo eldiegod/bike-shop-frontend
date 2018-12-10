@@ -24,7 +24,7 @@ const GET_BIKES = gql`
 
 const Catalog = () => {
   const {data, error} = useQuery(GET_BIKES);
-  console.log(data);
+  // console.log(data);
   return (
     <div className="">
       <span className="text-xl font-bold border-b-3 ">

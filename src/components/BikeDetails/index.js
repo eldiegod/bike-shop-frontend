@@ -16,6 +16,7 @@ const GET_BIKE = gql`
         hasColors
         options {
           choice
+          id
         }
       }
     }
@@ -30,7 +31,7 @@ const BikeDetails = ({
   const {data, error} = useQuery(GET_BIKE, {
     variables: {id: parseInt(id)},
   });
-  console.log(data);
+  // console.log(data);
   return (
     <>
       {error || !data.bike ? (

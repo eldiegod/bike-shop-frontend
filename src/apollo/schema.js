@@ -1,9 +1,9 @@
 export const typeDefs = `
   type CustomBike {
-    id: Int
+    id: ID
     name: String
     price: Float
-    optionIds: [Int]
+    optionIds: [ID]
   }
 
   type Order {
