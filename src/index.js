@@ -8,25 +8,21 @@ import {ApolloProvider} from 'react-apollo-hooks';
 import * as serviceWorker from './serviceWorker';
 import App from 'components/App';
 import Fallback from 'components/Fallback';
-
-import {defaults, resolvers} from 'apollo/resolvers';
-import {typeDefs} from 'apollo/schema';
+import {Provider} from 'hooks/storeHook';
+import reducer from './reducer';
 
 const client = new ApolloClient({
   uri: 'http://localhost:3000/graphql',
-  clientState: {
-    defaults,
-    resolvers,
-    typeDefs,
-  },
 });
 
 const render = Component => {
   return ReactDOM.render(
     <Suspense fallback={<Fallback />}>
-      <ApolloProvider client={client}>
-        <Component />
-      </ApolloProvider>
+      <Provider reducer={reducer}>
+        <ApolloProvider client={client}>
+          <Component />
+        </ApolloProvider>
+      </Provider>
     </Suspense>,
     document.getElementById('root'),
   );

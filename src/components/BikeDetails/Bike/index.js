@@ -1,27 +1,18 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {gql} from 'apollo-boost';
+// import {useMutation} from 'react-apollo-hooks';
+import {useStore} from 'hooks/storeHook';
+import {addBikeToOrder} from 'reducer';
 
+// components
 import BikeIcon from 'icons/BikeIcon';
 import Underline from 'components/Underline';
 import Customizable from './Customizable';
 
-const UPDATE_ORDER = gql`
-  mutation updateOrder(
-    $customerEmail: String
-    $customBikes: [CustomBike]
-  ) {
-    updateOrder(
-      customerEmail: $customerEmail
-      customBikes: $customBikes
-    ) @client {
-      customerEmail
-      customBikes
-    }
-  }
-`;
-
 const Bike = ({bike}) => {
+  //TODO: refactor the local state
+  // Handles the state for select customizable options
   const [options, setOptions] = useState(() => {
     const initialOptions = [];
     bike.customizables.forEach(customizable => {
@@ -31,9 +22,13 @@ const Bike = ({bike}) => {
         id: customizable.options[0].id,
       };
     });
-    console.log(initialOptions);
+    // console.log(initialOptions);
     return initialOptions;
   });
+  const [store, dispatch] = useStore();
+
+  // const addBikeToCart = useMutation(ADD_BIKE_TO_ORDER);
+
   return (
     <div className="mt-16 pl-4 w-full shadow-md">
       <div className="px-3 pt-6 inline-block w-1/2 bg-white align-top">
@@ -75,7 +70,23 @@ const Bike = ({bike}) => {
                 &larr; Go Back..?
               </Link>
             </div>
-            <button className="px-8 py-3 tracking-wide font-bold bg-green text-white hover:underline rounded-sm float-right">
+            <button
+              onClick={() => {
+                const optionIDs = Object.values(options).map(
+                  option => option.id,
+                );
+                // console.log(optionIDs);
+                dispatch(
+                  addBikeToOrder({
+                    id: bike.id,
+                    name: bike.name,
+                    price: bike.price,
+                    optionIds: optionIDs,
+                  }),
+                );
+              }}
+              className="px-8 py-3 tracking-wide font-bold bg-green text-white hover:underline rounded-sm float-right"
+            >
               Get this 🚲 <span className="underline">from</span>{' '}
               {bike.price} €
             </button>

@@ -4290,6 +4290,10 @@ immer@1.7.2:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/immer/-/immer-1.7.2.tgz#a51e9723c50b27e132f6566facbec1c85fc69547"
 
+immer@^1.9.2:
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/immer/-/immer-1.9.2.tgz#2b26f53be03baf00622005bccbc37c063d619408"
+
 immutable-tuple@^0.4.9:
   version "0.4.9"
   resolved "https://registry.yarnpkg.com/immutable-tuple/-/immutable-tuple-0.4.9.tgz#473ebdd6c169c461913a454bf87ef8f601a20ff0"
@@ -8405,6 +8409,10 @@ statuses@~1.4.0:
 stealthy-require@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
+
+storehook@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/storehook/-/storehook-0.0.6.tgz#916de5924417160f42bd0b10796ed452937f0196"
 
 stream-browserify@^2.0.1:
   version "2.0.1"
