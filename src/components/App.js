@@ -1,9 +1,10 @@
 import React, {Suspense} from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 //components
 import Header from 'components/Header';
 import Catalog from 'components/Catalog';
+import Cart from 'components/Cart';
 import BikeDetails from 'components/BikeDetails';
 import Fallback from 'components/Fallback';
 
@@ -17,6 +18,8 @@ const App = () => {
           <Suspense fallback={<Fallback />}>
             <Route path="/" exact component={Catalog} />
             <Route path="/bike/:id" component={BikeDetails} />
+            <Route path="/my-cart" component={Cart} />
+            {/* <Redirect to="/" /> */}
           </Suspense>
         </div>
         {/* footer */}

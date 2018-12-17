@@ -9,10 +9,17 @@ const initialState = {
 
 const UPDATE_ORDER = 'UPDATE_ORDER';
 const ADD_BIKE_TO_ORDER = 'ADD_BIKE_TO_ORDER';
+const REMOVE_BIKE_FROM_ORDER = 'REMOVE_BIKE_FROM_ORDER';
 
 export default (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
+      case REMOVE_BIKE_FROM_ORDER: {
+        if (action.index > -1) {
+          draft.order.customBikes.splice(action.index, 1);
+        }
+        return;
+      }
       case ADD_BIKE_TO_ORDER: {
         draft.order.customBikes.push(action.bike);
         console.log(state);
@@ -47,6 +54,10 @@ export const updateOrder = order => {
 
 export const addBikeToOrder = bike => {
   return {type: ADD_BIKE_TO_ORDER, bike};
+};
+
+export const removeBikeFromOrder = index => {
+  return {type: REMOVE_BIKE_FROM_ORDER, index};
 };
 // export const resetOrder = order => {
 //   return {type: RESET};

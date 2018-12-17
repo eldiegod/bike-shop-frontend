@@ -6,7 +6,7 @@ import faBike from './bike2.svg';
 
 //components
 import Icon from 'icons/Icon.js';
-
+// TODO: maybe dont use styled?
 const BikeIcon = styled(Icon)`
   stroke: currentColor;
 

@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import {gql} from 'apollo-boost';
-// import {useMutation} from 'react-apollo-hooks';
+import produce from 'immer';
 import {useStore} from 'hooks/storeHook';
 import {addBikeToOrder} from 'reducer';
 
@@ -11,23 +10,18 @@ import Underline from 'components/Underline';
 import Customizable from './Customizable';
 
 const Bike = ({bike}) => {
-  //TODO: refactor the local state
   // Handles the state for select customizable options
-  const [options, setOptions] = useState(() => {
-    const initialOptions = [];
-    bike.customizables.forEach(customizable => {
-      initialOptions[customizable.name] = {
-        name: customizable.name,
-        choice: customizable.options[0].choice,
-        id: customizable.options[0].id,
-      };
-    });
-    // console.log(initialOptions);
-    return initialOptions;
-  });
+  const [options, setOptions] = useState(() =>
+    bike.customizables.map(customizable => ({
+      name: customizable.name,
+      choice: customizable.options[0].choice,
+      id: customizable.options[0].id,
+    })),
+  );
   const [store, dispatch] = useStore();
 
-  // const addBikeToCart = useMutation(ADD_BIKE_TO_ORDER);
+  const getOptionByName = name =>
+    options.find(option => name === option.name);
 
   return (
     <div className="mt-16 pl-4 w-full shadow-md">
@@ -53,13 +47,16 @@ const Bike = ({bike}) => {
               <Customizable
                 key={customizable.name}
                 select={optionSelected => {
-                  console.log('clicked');
-                  console.log(options);
-                  options[optionSelected.name] = optionSelected;
-                  console.log(options);
-                  setOptions(options);
+                  setOptions(
+                    produce(options, draft => {
+                      const index = draft.findIndex(
+                        option => optionSelected.name === option.name,
+                      );
+                      draft[index] = optionSelected;
+                    }),
+                  );
                 }}
-                selectedId={options[customizable.name].id}
+                selectedId={getOptionByName(customizable.name).id}
                 customizable={customizable}
               />
             ))}
@@ -70,33 +67,31 @@ const Bike = ({bike}) => {
                 &larr; Go Back..?
               </Link>
             </div>
-            <button
-              onClick={() => {
-                const optionIDs = Object.values(options).map(
-                  option => option.id,
-                );
-                // console.log(optionIDs);
-                dispatch(
-                  addBikeToOrder({
-                    id: bike.id,
-                    name: bike.name,
-                    price: bike.price,
-                    optionIds: optionIDs,
-                  }),
-                );
-              }}
-              className="px-8 py-3 tracking-wide font-bold bg-green text-white hover:underline rounded-sm float-right"
-            >
-              Get this 🚲 <span className="underline">from</span>{' '}
-              {bike.price} €
-            </button>
+            <Link to="/my-cart">
+              <button
+                onClick={() => {
+                  dispatch(
+                    addBikeToOrder({
+                      id: bike.id,
+                      name: bike.name,
+                      price: bike.price,
+                      options: options,
+                    }),
+                  );
+                }}
+                className="px-8 py-3 tracking-wide font-bold bg-green text-white hover:underline rounded-sm float-right"
+              >
+                Get this 🚲 <span className="underline">from</span>{' '}
+                {bike.price} €
+              </button>
+            </Link>
           </div>
         </div>
       </div>
       <div className="bg-grey-light inline-block w-1/2 h-128">
         <BikeIcon
-          wheelsColor={options['Wheels Color'].choice}
-          frameColor={options['Rim Color'].choice}
+          wheelsColor={getOptionByName('Wheels Color').choice}
+          frameColor={getOptionByName('Rim Color').choice}
         />
       </div>
     </div>

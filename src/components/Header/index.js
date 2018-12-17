@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {useStore} from 'hooks/storeHook';
 
 //icons (imported as svg using babel plugin)
 import faCart from '../../icons/shopping-cart-outline.svg';
@@ -8,6 +9,7 @@ import faCart from '../../icons/shopping-cart-outline.svg';
 import Icon from 'icons/Icon.js';
 
 const Header = () => {
+  const [store, dispatch] = useStore();
   return (
     <div className="w-full px-4 md:px-12 bg-white h-16 shadow-md">
       {/* weird flex but ok */}
@@ -21,8 +23,13 @@ const Header = () => {
       </div>
       <div className="w-2/3 inline">
         <div className="pt-4 float-right">
-          <Icon className="w-8" icon={faCart} />
+          <Link to="/my-cart">
+            <Icon className="w-8" icon={faCart} />
+          </Link>
         </div>
+        <span className="float-right pt-6 text-lg">
+          {store.order.customBikes.length}
+        </span>
       </div>
     </div>
   );
