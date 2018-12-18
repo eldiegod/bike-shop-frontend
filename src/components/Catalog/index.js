@@ -3,7 +3,7 @@ import React from 'react';
 import {gql} from 'apollo-boost';
 import {useQuery} from 'react-apollo-hooks';
 
-import Item from './Item';
+import Bike from './Item';
 
 const GET_BIKES = gql`
   {
@@ -27,16 +27,10 @@ const Catalog = () => {
   // console.log(data);
   return (
     <div className="">
-      <span className="text-xl font-bold border-b-3 ">
-        OUR BEST BIKES
-      </span>
+      <span className="text-xl font-bold border-b-3 ">OUR BEST BIKES</span>
       <div className="mt-4 flex flex-wrap justify-between">
         {data.allBikes.map((bike, index) => (
-          <Item
-            key={index}
-            item={bike}
-            customizables={bike.customizables}
-          />
+          <Bike key={index} item={bike} customizables={bike.customizables} />
         ))}
       </div>
     </div>
