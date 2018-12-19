@@ -12,19 +12,22 @@ const Text = ({children, isSelected, onClick}) => {
   );
 };
 
-const Color = ({color, isSelected, onClick}) => {
+const Color = ({color, isSelected, onClick, isAllowed}) => {
+  const disabledClasses = !isAllowed && 'cursor-not-allowed opacity-50';
   const selectedClasses = isSelected
     ? 'shadow-md rounded  '
     : 'hover:shadow-md rounded-full hover:rounded-sm';
   return (
     <div
       onClick={onClick}
-      className={`ml-2 align-middle cursor-pointer inline-block w-5 h-5 bg-${color} bg-${color}-light shadow-lg  ${selectedClasses}`}
-    />
+      className={`ml-2 align-middle text-center text-red font-bold cursor-pointer inline-block w-5 h-5 bg-${color} bg-${color}-light shadow-lg  ${selectedClasses} ${disabledClasses}`}
+    >
+      {!isAllowed && 'x'}
+    </div>
   );
 };
 
-const Customizable = ({customizable, selected, select}) => {
+const Customizable = ({customizable, selected, select, isAllowed}) => {
   const isSelected = id => selected.id === id;
   // console.log(selected);
   return (
@@ -37,6 +40,7 @@ const Customizable = ({customizable, selected, select}) => {
           <Color
             key={index}
             isSelected={selected.id === option.id}
+            isAllowed={isAllowed(option)}
             onClick={() => {
               select({
                 name: customizable.name,
@@ -47,14 +51,15 @@ const Customizable = ({customizable, selected, select}) => {
           />
         ) : (
           <Text
+            key={index}
             onClick={() => {
               select({
                 name: customizable.name,
                 ...option,
               });
             }}
+            isAllowed={isAllowed(option)}
             isSelected={selected.id === option.id}
-            key={index}
           >
             {option.choice}
           </Text>

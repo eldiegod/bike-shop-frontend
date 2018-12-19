@@ -21,7 +21,17 @@ const Bike = ({bike}) => {
 
   const selectedOptionsAddedPrice = selectedOptions.reduce((total, option) => total + option.price, 0);
   const getOptionByName = name => selectedOptions.find(option => name === option.name);
+  // can this :option be selected or is there a constrain?
+  const isOptionAllowed = option => {
+    return (
+      option &&
+      selectedOptions.find(({not_allowed_combinations}) =>
+        not_allowed_combinations.find(({id}) => id === option.id),
+      ) === undefined
+    );
+  };
   const selectOption = optionSelected => {
+    if (!isOptionAllowed(optionSelected)) return;
     setSelectedOptions(
       produce(selectedOptions, draft => {
         const index = draft.findIndex(option => optionSelected.name === option.name);
@@ -29,7 +39,6 @@ const Bike = ({bike}) => {
       }),
     );
   };
-
   console.log(selectedOptions);
   // console.log(selectedOptionsAddedPrice);
   return (
@@ -58,6 +67,7 @@ const Bike = ({bike}) => {
             {bike.customizables.map(customizable => (
               <Customizable
                 key={customizable.name}
+                isAllowed={isOptionAllowed}
                 select={selectOption}
                 selected={getOptionByName(customizable.name)}
                 customizable={customizable}
