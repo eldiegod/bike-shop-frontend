@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ExpandedOrder = ({order, index, collapse}) => {
-  console.log(order.bikeOrders);
+  // console.log(order.bikeOrders);
   return (
     <tr className={`${index % 2 ? 'bg-grey-dark' : 'bg-grey'}`}>
       <td className="py-2 pl-4 align-text-top font-bold">

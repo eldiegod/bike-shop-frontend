@@ -10,7 +10,7 @@ import Underline from 'components/Underline';
 import Customizable from './Customizable';
 
 const Bike = ({bike}) => {
-  // Handles the state for select customizable options
+  // Handles the state for selected customizable options
   const [options, setOptions] = useState(() =>
     bike.customizables.map(customizable => ({
       name: customizable.name,
@@ -20,8 +20,7 @@ const Bike = ({bike}) => {
   );
   const [store, dispatch] = useStore();
 
-  const getOptionByName = name =>
-    options.find(option => name === option.name);
+  const getOptionByName = name => options.find(option => name === option.name);
 
   return (
     <div className="mt-16 pl-4 w-full shadow-md">
@@ -33,14 +32,11 @@ const Bike = ({bike}) => {
         <div className="mt-4 text-grey  text-lg">
           <div className="mt-8">High Quality Materials.</div>
           <div className="mt-8 text-md text-grey-dark">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur
-            sint occaecat cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+            in culpa qui officia deserunt mollit anim id est laborum.
           </div>
           <div className="mt-6 align-bottom">
             {bike.customizables.map(customizable => (
@@ -49,9 +45,7 @@ const Bike = ({bike}) => {
                 select={optionSelected => {
                   setOptions(
                     produce(options, draft => {
-                      const index = draft.findIndex(
-                        option => optionSelected.name === option.name,
-                      );
+                      const index = draft.findIndex(option => optionSelected.name === option.name);
                       draft[index] = optionSelected;
                     }),
                   );
@@ -81,8 +75,7 @@ const Bike = ({bike}) => {
                 }}
                 className="px-8 py-3 tracking-wide font-bold bg-green text-white hover:underline rounded-sm float-right"
               >
-                Get this 🚲 <span className="underline">from</span>{' '}
-                {bike.price} €
+                Get this 🚲 <span className="underline">from</span> {bike.price} €
               </button>
             </Link>
           </div>

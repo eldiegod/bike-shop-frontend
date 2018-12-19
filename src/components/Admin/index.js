@@ -6,7 +6,7 @@ import Orders from './Orders';
 const Admin = () => {
   return (
     <Switch>
-      <Route path="/orders" component={Orders} />
+      <Route path="/admin/orders" component={Orders} />
       {/* <Route path="/orders" component={Orders} /> */}
       <Redirect to="/admin/orders" />
     </Switch>

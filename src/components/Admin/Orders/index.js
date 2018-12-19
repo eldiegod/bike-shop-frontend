@@ -45,8 +45,8 @@ const Orders = () => {
     );
   };
 
-  console.log(allOrders);
-  console.log(isExpandedArray);
+  // console.log(allOrders);
+  // console.log(isExpandedArray);
   return (
     <div>
       <b>ALL ORDERS</b>
