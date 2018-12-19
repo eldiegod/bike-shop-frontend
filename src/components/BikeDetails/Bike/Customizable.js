@@ -1,9 +1,7 @@
 import React from 'react';
 
 const Text = ({children, isSelected, onClick}) => {
-  const selectedClasses = isSelected
-    ? 'underline font-bold'
-    : 'hover:underline hover:font-bold';
+  const selectedClasses = isSelected ? 'underline font-bold' : 'hover:underline hover:font-bold';
   return (
     <span
       onClick={onClick}
@@ -26,21 +24,23 @@ const Color = ({color, isSelected, onClick}) => {
   );
 };
 
-const Customizable = ({customizable, selectedId, select}) => {
-  const isSelected = id => selectedId === id;
+const Customizable = ({customizable, selected, select}) => {
+  const isSelected = id => selected.id === id;
+  // console.log(selected);
   return (
     <div className="px-2 py-1 mt-1 bg-grey-lighter text-grey-darker shadow-sm">
-      <span className="pt-1 align-middle">{customizable.name}: </span>
+      <span className="pt-1 align-middle">
+        {customizable.name}(<b>+{selected.price}€</b>):{' '}
+      </span>
       {customizable.options.map((option, index) =>
         customizable.hasColors ? (
           <Color
             key={index}
-            isSelected={selectedId === option.id}
+            isSelected={selected.id === option.id}
             onClick={() => {
               select({
                 name: customizable.name,
-                choice: option.choice,
-                id: option.id,
+                ...option,
               });
             }}
             color={option.choice}
@@ -50,11 +50,10 @@ const Customizable = ({customizable, selectedId, select}) => {
             onClick={() => {
               select({
                 name: customizable.name,
-                choice: option.choice,
-                id: option.id,
+                ...option,
               });
             }}
-            isSelected={selectedId === option.id}
+            isSelected={selected.id === option.id}
             key={index}
           >
             {option.choice}

@@ -60,6 +60,8 @@ const Cart = () => {
     });
   };
   // console.log(order);
+  const addedPriceOfCustomization = customBike =>
+    customBike.options.reduce((total, option) => total + option.price, 0);
   return (
     <div className=" mx-auto px-2 md:px-8">
       <div className="text-grey-darkest text-3xl font-bold text-sm">Your Order</div>
@@ -82,15 +84,14 @@ const Cart = () => {
       {order.customBikes.length > 0 ? (
         order.customBikes.map((customBike, index) => (
           <div key={index} className="border-b-2 border-grey-darker pb-2 mb-4 leading-normal">
-            <div className="inline-block w-4/5">
+            <div className="inline-block sm:w-4/5 text-sm">
               {customBike.name + ' 🚲 '}- Base Price: {customBike.price + '€ - '}
               {customBike.options.map((option, index) => (
                 <span key={index}>
-                  {option.name}: {option.choice}
-                  {' - '}
+                  {option.name}: {option.choice}(<b>{option.price}€</b>){' - '}
                 </span>
               ))}
-              <b>Total:</b> {customBike.price + '€'}
+              <b>Total:</b> {customBike.price + addedPriceOfCustomization(customBike) + '€'}
             </div>
             <button
               onClick={() => dispatch(removeBikeFromOrder(index))}

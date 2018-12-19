@@ -17,6 +17,12 @@ const GET_BIKE = gql`
         options {
           choice
           id
+          price
+          not_allowed_combinations {
+            name
+            choice
+            id
+          }
         }
       }
     }
@@ -32,15 +38,7 @@ const BikeDetails = ({
     variables: {id: parseInt(id)},
   });
   // console.log(data);
-  return (
-    <>
-      {error || !data.bike ? (
-        <BikeNotFound />
-      ) : (
-        <Bike bike={data.bike} />
-      )}
-    </>
-  );
+  return <>{error || !data.bike ? <BikeNotFound /> : <Bike bike={data.bike} />}</>;
 };
 
 export default BikeDetails;

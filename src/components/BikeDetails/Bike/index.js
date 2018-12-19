@@ -11,46 +11,55 @@ import Customizable from './Customizable';
 
 const Bike = ({bike}) => {
   // Handles the state for selected customizable options
-  const [options, setOptions] = useState(() =>
+  const [selectedOptions, setSelectedOptions] = useState(() =>
     bike.customizables.map(customizable => ({
       name: customizable.name,
-      choice: customizable.options[0].choice,
-      id: customizable.options[0].id,
+      ...customizable.options[0],
     })),
   );
   const [store, dispatch] = useStore();
 
-  const getOptionByName = name => options.find(option => name === option.name);
+  const selectedOptionsAddedPrice = selectedOptions.reduce((total, option) => total + option.price, 0);
+  const getOptionByName = name => selectedOptions.find(option => name === option.name);
+  const selectOption = optionSelected => {
+    setSelectedOptions(
+      produce(selectedOptions, draft => {
+        const index = draft.findIndex(option => optionSelected.name === option.name);
+        draft[index] = optionSelected;
+      }),
+    );
+  };
 
+  console.log(selectedOptions);
+  // console.log(selectedOptionsAddedPrice);
   return (
     <div className="mt-16 pl-4 w-full shadow-md">
-      <div className="px-3 pt-6 inline-block w-1/2 bg-white align-top">
+      <div className="px-3 pt-6 inline-block lg:w-1/2 bg-white align-top">
         <div className="text-grey-darkest text-3xl font-bold text-sm ">
           {bike.name}
           <Underline color="red" />
         </div>
         <div className="mt-4 text-grey  text-lg">
           <div className="mt-8">High Quality Materials.</div>
-          <div className="mt-8 text-md text-grey-dark">
+          <div className="inline-block sm:w-1/2 px-4 lg:px-0 lg:w-full lg:block mt-8 text-md text-justify text-grey-dark">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
             labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
             nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
             esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
             in culpa qui officia deserunt mollit anim id est laborum.
           </div>
+          <div className="inline-block align-baseline mt-4 w-full sm:mt-0 sm:w-1/2 lg:hidd bg-grey-light ">
+            <BikeIcon
+              wheelsColor={getOptionByName('Wheels Color').choice}
+              frameColor={getOptionByName('Rim Color').choice}
+            />
+          </div>
           <div className="mt-6 align-bottom">
             {bike.customizables.map(customizable => (
               <Customizable
                 key={customizable.name}
-                select={optionSelected => {
-                  setOptions(
-                    produce(options, draft => {
-                      const index = draft.findIndex(option => optionSelected.name === option.name);
-                      draft[index] = optionSelected;
-                    }),
-                  );
-                }}
-                selectedId={getOptionByName(customizable.name).id}
+                select={selectOption}
+                selected={getOptionByName(customizable.name)}
                 customizable={customizable}
               />
             ))}
@@ -69,19 +78,20 @@ const Bike = ({bike}) => {
                       id: bike.id,
                       name: bike.name,
                       price: bike.price,
-                      options: options,
+                      options: selectedOptions,
                     }),
                   );
                 }}
-                className="px-8 py-3 tracking-wide font-bold bg-green text-white hover:underline rounded-sm float-right"
+                className="px-8 py-3 tracking-wide font-bold bg-green text-white hover:underline rounded-sm float-right mb-4 lg:mb-2"
               >
-                Get this 🚲 <span className="underline">from</span> {bike.price} €
+                Add 🚲 to Cart <span className="underline">for</span> {bike.price + selectedOptionsAddedPrice}
+                €
               </button>
             </Link>
           </div>
         </div>
       </div>
-      <div className="bg-grey-light inline-block w-1/2 h-128">
+      <div className="hidd lg:inline-block bg-grey-light inline-block w-1/2 h-128">
         <BikeIcon
           wheelsColor={getOptionByName('Wheels Color').choice}
           frameColor={getOptionByName('Rim Color').choice}
