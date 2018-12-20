@@ -39,7 +39,7 @@ const Bike = ({bike}) => {
       }),
     );
   };
-  console.log(selectedOptions);
+  // console.log(selectedOptions);
   // console.log(selectedOptionsAddedPrice);
   return (
     <div className="mt-16 pl-4 w-full shadow-md">

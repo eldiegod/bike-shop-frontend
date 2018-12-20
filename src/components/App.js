@@ -8,6 +8,7 @@ import Cart from 'components/Cart';
 import BikeDetails from 'components/BikeDetails';
 import Fallback from 'components/Fallback';
 import Admin from 'components/Admin';
+import OrderCompleted from 'components/OrderCompleted';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
               <Route path="/bike/:id" component={BikeDetails} />
               <Route path="/my-cart" component={Cart} />
               <Route path="/admin" component={Admin} />
+              <Route path="/order-completed" component={OrderCompleted} />
               <Redirect to="/" />
             </Switch>
           </Suspense>

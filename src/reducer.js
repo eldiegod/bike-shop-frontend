@@ -10,8 +10,8 @@ const initialState = {
 const UPDATE_ORDER = 'UPDATE_ORDER';
 const ADD_BIKE_TO_ORDER = 'ADD_BIKE_TO_ORDER';
 const REMOVE_BIKE_FROM_ORDER = 'REMOVE_BIKE_FROM_ORDER';
-const UPDATE_CUSTOMER_EMAIL_FROM_ORDER =
-  'UPDATE_CUSTOMER_EMAIL_FROM_ORDER';
+const UPDATE_CUSTOMER_EMAIL_FROM_ORDER = 'UPDATE_CUSTOMER_EMAIL_FROM_ORDER';
+const RESET_ORDER = 'RESET_ORDER';
 
 export default (state = initialState, action) =>
   produce(state, draft => {
@@ -24,36 +24,28 @@ export default (state = initialState, action) =>
       }
       case ADD_BIKE_TO_ORDER: {
         draft.order.customBikes.push(action.bike);
-        console.log(state);
-        console.log(action.bike);
-        console.log(draft);
+        // console.log(state);
+        // console.log(action.bike);
+        // console.log(draft);
         return;
       }
       case UPDATE_CUSTOMER_EMAIL_FROM_ORDER: {
-        if (action.customerEmail !== undefined)
-          draft.order.customerEmail = action.customerEmail;
+        if (action.customerEmail !== undefined) draft.order.customerEmail = action.customerEmail;
         return;
       }
       case UPDATE_ORDER: {
-        if (action.order.customerEmail !== undefined)
-          draft.order.customerEmail = action.order.customerEmail;
-        if (action.order.customBikes !== undefined)
-          draft.order.customBikes = action.order.customBikes;
+        if (action.order.customerEmail !== undefined) draft.order.customerEmail = action.order.customerEmail;
+        if (action.order.customBikes !== undefined) draft.order.customBikes = action.order.customBikes;
 
-        console.log(state);
-        console.log(draft);
+        // console.log(state);
+        // console.log(draft);
         return;
+      }
+      case RESET_ORDER: {
+        return {...initialState};
       }
     }
   });
-
-// export const loadOrders = () => {
-//   return {type: LOAD};
-// };
-
-// export const createOrder = order => {
-//   return {type: CREATE, order};
-// };
 
 export const updateOrder = order => {
   return {type: UPDATE_ORDER, order};
@@ -70,6 +62,7 @@ export const removeBikeFromOrder = index => {
 export const updateCustomerEmailFromOrder = customerEmail => {
   return {type: UPDATE_CUSTOMER_EMAIL_FROM_ORDER, customerEmail};
 };
-// export const resetOrder = order => {
-//   return {type: RESET};
-// };
+
+export const resetOrder = () => {
+  return {type: RESET_ORDER};
+};

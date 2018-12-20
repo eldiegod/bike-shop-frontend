@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {gql} from 'apollo-boost';
 import {useMutation} from 'react-apollo-hooks';
 
-import {removeBikeFromOrder, updateCustomerEmailFromOrder} from 'reducer';
+import {removeBikeFromOrder, updateCustomerEmailFromOrder, resetOrder} from 'reducer';
 
 import Underline from 'components/Underline';
 import {RegExp} from 'tcomb';
@@ -31,7 +31,7 @@ const CREATE_ORDER = gql`
   }
 `;
 
-const Cart = () => {
+const Cart = ({history}) => {
   const emailInputEl = useRef(null);
   const [{order}, dispatch] = useStore();
   const createOrder = useMutation(CREATE_ORDER); // server request
@@ -47,17 +47,24 @@ const Cart = () => {
   const onInputChange = e => {
     dispatch(updateCustomerEmailFromOrder(e.target.value));
   };
-  const onCheckout = () => {
+  const onCheckout = async () => {
     if (!canCheckout) return;
-    createOrder({
-      variables: {
-        customer_email: emailInputEl.current.value,
-        custom_bikes: order.customBikes.map(bike => ({
-          bike_id: parseInt(bike.id),
-          option_ids: bike.options.map(option => parseInt(option.id)),
-        })),
-      },
-    });
+    // if checkout was succesful reset the store and redirect to the success page
+    try {
+      await createOrder({
+        variables: {
+          customer_email: emailInputEl.current.value,
+          custom_bikes: order.customBikes.map(bike => ({
+            bike_id: parseInt(bike.id),
+            option_ids: bike.options.map(option => parseInt(option.id)),
+          })),
+        },
+      });
+      dispatch(resetOrder());
+      history.push('/order-completed');
+    } catch (err) {
+      console.log(err);
+    }
   };
   // console.log(order);
   const addedPriceOfCustomization = customBike =>
