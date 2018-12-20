@@ -12,7 +12,7 @@ import {Provider} from 'hooks/storeHook';
 import reducer from './reducer';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:3000/graphql',
+  uri: process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000/graphql',
 });
 
 const render = Component => {
