@@ -16,8 +16,7 @@
     "styled-components": "^4.1.1"
   },
   "scripts": {
-    "purgecss": "purgecss -c purgecss.config.js -o src/styles/",
-    "build:css": "postcss src/styles/index.css -o src/styles/bundle.css && yarn purgecss",
+    "build:css": "postcss src/styles/index.css -o src/styles/bundle.css",
     "watch:css": "postcss src/styles/index.css -o src/styles/bundle.css -w",
     "dev:windows": "yarn watch:css | react-app-rewired start",
     "dev": "yarn watch:css & react-app-rewired start",
@@ -47,7 +46,6 @@
     "postcss-mixins": "^6.2.0",
     "postcss-nested": "^3.0.0",
     "precss": "^4.0.0",
-    "purgecss": "^0.21.0",
     "react-app-rewired": "^1.6.2",
     "react-scripts": "^2.1.1",
     "tailwindcss": "^0.5.2"
