@@ -14,7 +14,7 @@ import reducer from './reducer';
 const client = new ApolloClient({
   uri:
     process.env.NODE_ENV === 'production'
-      ? 'https://pandabize-backend.herokuapp.com/graphiql'
+      ? 'https://pandabize-backend.herokuapp.com/graphql'
       : 'http://localhost:3000/graphql',
 });
 
