@@ -4,6 +4,7 @@ import {gql} from 'apollo-boost';
 import {useQuery} from 'react-apollo-hooks';
 
 import Bike from './Item';
+import Error from 'components/Error';
 
 const GET_BIKES = gql`
   {
@@ -24,7 +25,7 @@ const GET_BIKES = gql`
 
 const Catalog = () => {
   const {data, error} = useQuery(GET_BIKES);
-  // console.log(data);
+  if (error) return <Error err={error} />;
   return (
     <div className="px-4 xl:px-0">
       <span className="text-xl font-bold border-b-3 ">OUR BEST BIKES</span>

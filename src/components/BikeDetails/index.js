@@ -4,6 +4,7 @@ import {useQuery} from 'react-apollo-hooks';
 
 import BikeNotFound from './BikeNotFound';
 import Bike from './Bike';
+import Error from 'components/Error';
 
 const GET_BIKE = gql`
   query getBikeById($id: Int!) {
@@ -37,8 +38,8 @@ const BikeDetails = ({
   const {data, error} = useQuery(GET_BIKE, {
     variables: {id: parseInt(id)},
   });
-  // console.log(data);
-  return <>{error || !data.bike ? <BikeNotFound /> : <Bike bike={data.bike} />}</>;
+  if (error) return <Error err={error} />;
+  return <>{!data.bike ? <BikeNotFound /> : <Bike bike={data.bike} />}</>;
 };
 
 export default BikeDetails;

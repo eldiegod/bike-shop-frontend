@@ -1,13 +1,13 @@
 import React, {useRef, useMemo, useEffect} from 'react';
 import {useStore} from 'hooks/storeHook';
 import {Link} from 'react-router-dom';
+import {RegExp} from 'tcomb';
 import {gql} from 'apollo-boost';
 import {useMutation} from 'react-apollo-hooks';
 
 import {removeBikeFromOrder, updateCustomerEmailFromOrder, resetOrder} from 'reducer';
 
 import Underline from 'components/Underline';
-import {RegExp} from 'tcomb';
 
 const CREATE_ORDER = gql`
   mutation createOrder($customer_email: String!, $custom_bikes: [CustomBike!]!) {
