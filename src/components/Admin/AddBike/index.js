@@ -62,7 +62,7 @@ const AddBike = () => {
       const {data} = await createBike({
         variables: {
           name: bikeName,
-          price: bikePrice,
+          price: parseFloat(bikePrice),
           customizable_ids: customizableIds,
         },
       });
