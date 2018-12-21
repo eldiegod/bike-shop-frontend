@@ -7,3 +7,6 @@ This project uses tailwindcss (functional css) to build the UI.
 `yarn` then `yarn dev` to start the app on dev mode.
 
 On the route "/admin" there is an admin area to add bikes, customizables and check orders.
+
+###Important: 
+the dev version of this project will only be fully functional if there is a version of the backend running locally too (https://github.com/eldiegod/bike-shop-backend)
