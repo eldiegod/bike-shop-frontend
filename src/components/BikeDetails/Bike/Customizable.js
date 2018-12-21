@@ -33,7 +33,7 @@ const Customizable = ({customizable, selected, select, isAllowed}) => {
   return (
     <div className="px-2 py-1 mt-1 bg-grey-lighter text-grey-darker shadow-sm">
       <span className="pt-1 align-middle">
-        {customizable.name}(<b>+{selected.price}€</b>):{' '}
+        {customizable.name}(<b>+{selected.price || 0}€</b>):{' '}
       </span>
       {customizable.options.map((option, index) =>
         customizable.hasColors ? (

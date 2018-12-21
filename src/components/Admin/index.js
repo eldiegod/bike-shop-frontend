@@ -11,7 +11,6 @@ const Admin = () => {
       <Navigation />
       <Switch>
         <Route path="/admin/orders" component={Orders} />
-        <Route path="/admin/add_customizable" component={AddBike} />
         <Route path="/admin/add_bike" component={AddBike} />
         <Redirect to="/admin/orders" />
       </Switch>
