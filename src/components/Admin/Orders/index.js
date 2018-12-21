@@ -49,7 +49,6 @@ const Orders = () => {
   // console.log(isExpandedArray);
   return (
     <div>
-      <b>ALL ORDERS</b>
       <table className="w-full mt-4" style={{borderCollapse: 'collapse'}}>
         <thead className="">
           <tr className="text-left bg-grey-lighter rounded-sm">
