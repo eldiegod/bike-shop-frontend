@@ -8,5 +8,5 @@ This project uses tailwindcss (functional css) to build the UI.
 
 On the route "/admin" there is an admin area to add bikes, customizables and check orders.
 
-###Important: 
+### Important: 
 the dev version of this project will only be fully functional if there is a version of the backend running locally too (https://github.com/eldiegod/bike-shop-backend)
